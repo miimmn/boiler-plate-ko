@@ -12,6 +12,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 const mongoose = require('mongoose')
+
 mongoose.connect(config.mongoURI).then(()=> console.log('MongoDB Connected...'))
 .catch(err => console.log(err))
 
@@ -34,6 +35,4 @@ app.post('/register',(req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-
 
