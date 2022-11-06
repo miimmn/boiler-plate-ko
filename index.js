@@ -1,21 +1,39 @@
 const express = require('express')
 const app = express()
 const port = 5000
+const bodyParser = require('body-parser');
+
+const config = require('./config/key');
+const { User } = require("./models/User");
+
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 
 const mongoose = require('mongoose')
-// mongoose.connect(mongodb+srv://miimmmi:<password>@cluster.chnj6mh.mongodb.net/?retryWrites=true&w=majority, {
-//     useNewUrlParser: true, 
-// }) 
-// 몽구스 v.6부터는 이게 디폴트로 적용돼서 이거 안쳐줘도 됨.
-
-
-
+mongoose.connect(config.mongoURI).then(()=> console.log('MongoDB Connected...'))
+.catch(err => console.log(err))
 
 app.get('/', (req, res) => {
-  res.send('Hello World! 냐냐냥')
+  res.send('Hello World! 냔냐냐냐')
 })
+
+app.post('/register',(req, res) => {
+  const user = new User(req.body)
+  user.save((err, userInfo) =>{
+    if(err) return res.json({success : false, err})
+    return res.status(200).json({
+      success: true
+    })
+  })
+})
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+
