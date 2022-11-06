@@ -4,16 +4,9 @@ const port = 5000
 
 
 const mongoose = require('mongoose')
-// mongoose.connect(mongodb+srv://miimmmi:<password>@cluster.chnj6mh.mongodb.net/?retryWrites=true&w=majority, {
-//     useNewUrlParser: true, 
-// }) 
-// ¸ù±¸½º v.6ºÎÅÍ´Â ÀÌ°Ô µðÆúÆ®·Î Àû¿ëµÅ¼­ ÀÌ°Å ¾ÈÃÄÁàµµ µÊ.
-
-
-
 
 app.get('/', (req, res) => {
-  res.send('Hello World! ³Ä³Ä³É')
+  res.send('Hello World! ëƒëƒëƒ¥')
 })
 
 app.listen(port, () => {
