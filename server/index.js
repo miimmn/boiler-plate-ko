@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
-const port = 5000
+
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const config = require('./config/key');
 const {auth} = require('./middleware/auth')
 const {User} = require("./models/User");
+
 
 
 app.use(express.json())
@@ -22,14 +23,18 @@ const {
 } = require('body-parser');
 
 
-
 mongoose.connect(config.mongoURI).then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err))
 
 
-
 app.get('/', (req, res) => {
-    res.send('Hello World! 냔냐냐냐')
+    res.send('Hello World! ㄴ냐냐ㅑㅑ냐ㅑ냥')
+})
+
+
+app.get('/api/hello', (req, res) =>{
+    
+    res.send("안뇽하세요")
 })
 
 
@@ -116,7 +121,5 @@ app.get('/api/users/logout', auth, (req, res) => {
 })
 
 
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+const port = 5000
+app.listen(port, () => { console.log(`Example app listening on port ${port}`) })
