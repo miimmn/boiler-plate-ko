@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const config = require('./config/key');
@@ -72,9 +71,10 @@ app.post('/api/users/login', (req, res) => {
         // 요청된 이메일이 db에 있다면, 비번이 일치하는지 확인한당
 
         user.comparePassword(req.body.password, (err, isMatch) => {
+            
             if (!isMatch) return res.json({
-                loginSeccess: false,
-                message: "비번 틀림;;"
+                loginSuccess: false,
+                message: "비번 틀림;;;;;;;;;;"
             })
             // 비번까지 맞다? 그럼 토큰 생성하기
             user.generateToken((err, user) => {
@@ -82,8 +82,8 @@ app.post('/api/users/login', (req, res) => {
 
                 // 토큰을 쿠키 || 로컬 스토리지 ... etc 에 저장한다.
                 res.cookie("x_auth", user.token)
-                .status(200)
-                .json({loginSeccess : true , userId: user._id})
+                    .status(200)
+                    .json({loginSuccess : true , userId: user._id})
             })
         })
     })
