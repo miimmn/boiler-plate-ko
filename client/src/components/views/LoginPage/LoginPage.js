@@ -3,9 +3,6 @@ import { useDispatch } from 'react-redux'
 import { loginUser } from '../../../_actions/user_actions'
 import { useNavigate } from "react-router-dom";
 
-
-
-
 function LoginPage() {
 
     const dispatch = useDispatch()
@@ -40,7 +37,6 @@ function LoginPage() {
                 }
             })
     }
-
 
 
     return (
